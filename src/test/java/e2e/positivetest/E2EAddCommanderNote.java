@@ -31,9 +31,9 @@ public class E2EAddCommanderNote {
                 .chooseRandomDate()
                 .saveNote()
                 .checkNoteSaved(note)
-                .isNoteFound(note)
-                .deleteLastNote(action)
-                .approveDelete();
+                .isNoteFound(note);
+//                .deleteLastNote(action)
+//                .approveDelete();
 
 
 

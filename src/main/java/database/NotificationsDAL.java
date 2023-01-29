@@ -19,7 +19,7 @@ public class NotificationsDAL extends PrimaryKeyDAL<Notifications, Long> {
     @Override
     protected Map<String, Object> filters(Notifications notifications){
         return new HashMap<>() {{
-            put("id", notifications.id());
+            put("Id", notifications.id());
         }};
     }
 
@@ -36,7 +36,8 @@ public class NotificationsDAL extends PrimaryKeyDAL<Notifications, Long> {
 
     @Override
     public Notifications findOne(Long id) {
-        return super.selectOne(filters(new Notifications().id(id))).orElse(null);
+        return super.selectOne(filters(new Notifications().
+                id(id))).orElse(null);
     }
 
     public void deleteByUser(String sourceId){
