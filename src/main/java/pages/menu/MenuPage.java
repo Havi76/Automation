@@ -63,8 +63,6 @@ public class MenuPage {
     @Find(className = "SoldierRect_SoldierWind__3BRIq")
     private SelenideElement soliderCard;
 
-
-
 //    @Find(css = "LandingRight_desktopScrollContent__1NetZ div:nth-child()")
 //    private SelenideElement ;
 

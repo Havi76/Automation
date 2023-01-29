@@ -37,5 +37,11 @@ public class SoliderDetailsPage {
     @Find(className = "RequestWindow_BDayMsg__1ese2")
     private ElementsCollection distributionMessageUpdates;
 
+    @Find(text =  "וראיונות")
+    private SelenideElement havadsAndInterviewsButton;
+
+    @Find(text = "הוספת ראיון חדש")
+    private SelenideElement addNewInterviewButton;
+
 
 }

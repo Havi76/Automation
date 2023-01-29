@@ -5,8 +5,8 @@ import com.codeborne.selenide.Selenide;
 import pages.commendNotes.AddCommanderNoteBL;
 import pages.deleteNote.DeleteNoteBL;
 import pages.newDistributionMessage.NewDistributionMessageBL;
+import pages.newInterview.NewInterviewBL;
 
-import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.text;
 import static framwork.configuration.ScrollBehaviour.smooth;
 
@@ -63,5 +63,15 @@ public class SoliderDetailsBL {
         page.distributionMessageUpdates().shouldHave(CollectionCondition.sizeGreaterThan(0));
         page.distributionMessageUpdates().find(text(name)).click();
         return new NewDistributionMessageBL();
+    }
+
+    public SoliderDetailsBL pressOnHavadAndInterviews() {
+        page.havadsAndInterviewsButton().click();
+        return this;
+    }
+
+    public NewInterviewBL pressOnNewInterview() {
+        page.addNewInterviewButton().click();
+        return new NewInterviewBL();
     }
 }
