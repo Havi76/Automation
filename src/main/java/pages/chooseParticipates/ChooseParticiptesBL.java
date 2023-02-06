@@ -12,7 +12,7 @@ public class ChooseParticiptesBL {
 
     public ChooseParticiptesBL chooseRandomSubunit(){
         page.subunitCheckboxCollection().get(random.nextInt
-                (page.subunitCheckboxCollection().size()-1)).click();
+                (page.subunitCheckboxCollection().size())).click();
         return this;
     }
 

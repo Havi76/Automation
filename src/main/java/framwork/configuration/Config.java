@@ -216,7 +216,7 @@ public final class Config implements IExecutionListener {
     }
 
     static {
-        Configuration.timeout = 20000;
+        Configuration.timeout = 30000;
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
                 .screenshots(true)
                 .savePageSource(true)

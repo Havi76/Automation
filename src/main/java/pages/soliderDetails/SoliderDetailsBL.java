@@ -1,14 +1,18 @@
 package pages.soliderDetails;
 
 import com.codeborne.selenide.CollectionCondition;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 import pages.commendNotes.AddCommanderNoteBL;
 import pages.deleteNote.DeleteNoteBL;
 import pages.newDistributionMessage.NewDistributionMessageBL;
 import pages.newInterview.NewInterviewBL;
 
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.*;
 import static framwork.configuration.ScrollBehaviour.smooth;
+
+import static pages.newInterview.NewInterviewBL.interviewFoundFlag;
 
 public class SoliderDetailsBL {
     private final SoliderDetailsPage page = Selenide.page(SoliderDetailsPage.class);
@@ -73,5 +77,25 @@ public class SoliderDetailsBL {
     public NewInterviewBL pressOnNewInterview() {
         page.addNewInterviewButton().click();
         return new NewInterviewBL();
+    }
+
+    public SoliderDetailsBL isInterviewFound(String date, String author) {
+        ElementsCollection relevantInterviewsCollection;
+        if (page.showmoreButton().exists()){
+            page.showmoreButton().click();
+            relevantInterviewsCollection = page.interviewsCollectiononPopUp().shouldHave(CollectionCondition.sizeGreaterThan(0))
+                    .filter(text(date)).filter(text(author));
+        }
+        else
+            relevantInterviewsCollection = page.interviewsCollectiononSoliderDetailsPage().shouldHave(CollectionCondition.sizeGreaterThan(0))
+                    .filter(text(date)).filter(text(author));
+        for (SelenideElement interview : relevantInterviewsCollection.shouldHave(CollectionCondition.sizeGreaterThan(0))) {
+            interview.shouldBe(enabled, visible).click();
+            new NewInterviewBL().checkBodyText();
+            if (interviewFoundFlag)
+                return this;
+        }
+        assert interviewFoundFlag;
+        return this;
     }
 }

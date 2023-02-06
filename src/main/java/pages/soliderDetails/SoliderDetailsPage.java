@@ -37,11 +37,23 @@ public class SoliderDetailsPage {
     @Find(className = "RequestWindow_BDayMsg__1ese2")
     private ElementsCollection distributionMessageUpdates;
 
-    @Find(text =  "וראיונות")
+    @Find(text = "חוו\"דים וריאיונות")
     private SelenideElement havadsAndInterviewsButton;
 
-    @Find(text = "הוספת ראיון חדש")
+    @Find(className = "Interviews_addIcon__2vk43")
     private SelenideElement addNewInterviewButton;
+
+    @Find(className = "ShowMore_extraRow__YwXyC")
+    private SelenideElement showmoreButton;
+
+    @Find(css = ".Interviews_allInterviewsContainer__1LmGl .Interview_interview__3HvWr")
+    private ElementsCollection interviewsCollectiononPopUp;
+
+    @Find (css = ".Interviews_interviewsContainer__VSAsX .Interview_interview__3HvWr")
+    private ElementsCollection interviewsCollectiononSoliderDetailsPage;
+
+    @Find(className = "Interview_interviewDate__3-tYQ")
+    private SelenideElement interviewDate;
 
 
 }
