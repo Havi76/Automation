@@ -4,16 +4,14 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import framwork.general.DataFaker;
 import pages.soliderDetails.SoliderDetailsBL;
-import consts.Consts.*;
-
 
 import java.util.List;
 import java.util.Random;
 
 import static com.codeborne.selenide.Condition.*;
-import static consts.Consts.BODYTEXT;
 
 public class NewInterviewBL {
+    String defualtBodyText = "d";
     private final NewInterviewPage page = Selenide.page(NewInterviewPage.class);
     Random random = new Random();
     DataFaker dataFaker = new DataFaker();
@@ -29,7 +27,7 @@ public class NewInterviewBL {
         return this;
     }
 
-    public SoliderDetailsBL fillInterview(){
+    public NewInterviewBL fillInterview(){
 //        bodyText = dataFaker.howIMetYourMotherQuote(500);
         bodyText = "I realized that I’m searching, searching for what I really want in life. And you know what? I have absolutely no idea what that is.";
         page.interviewBodyText().val(bodyText);
@@ -40,6 +38,11 @@ public class NewInterviewBL {
             page.dropDownListsofTiob().get(1).click();
             page.chooseResponseChildren().get(random.nextInt(3)).click();
         }
+
+        return this;
+    }
+
+    public SoliderDetailsBL saveInterview() {
         page.saveButton().shouldBe(Condition.enabled).click();
         page.savedText().should(exist);
         page.thankyouButton().click();
@@ -48,7 +51,7 @@ public class NewInterviewBL {
 
     public void checkBodyText(){
         if (bodyText == null)
-            bodyText = BODYTEXT;
+            bodyText = defualtBodyText;
         if (page.interviewBodyText().should(visible, enabled).text().equals(bodyText)) {
             interviewFoundFlag = true;
         }

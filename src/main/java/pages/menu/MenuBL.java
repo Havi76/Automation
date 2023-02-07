@@ -32,14 +32,14 @@ public class MenuBL {
         return this;
     }
 
-    public Subunit findSubunit(String unitName) {
+    public Subunit findSubunit(String subunit) {
         page.unitTitle().shouldHave(text("הגדוד שלי"));
         page.subunitList().shouldHave(sizeGreaterThan(0));
-        SelenideElement subunit = page.subunitList().stream()
-                .filter(selenideElement -> selenideElement.text().contains(unitName)).findFirst()
+        SelenideElement tempSubunit = page.subunitList().stream()
+                .filter(selenideElement -> selenideElement.text().contains(subunit)).findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("לא נמצאה המסגרת המבוקשת"));
-        subunit.scrollIntoView(smooth);
-        return new Subunit(subunit);
+        tempSubunit.scrollIntoView(smooth);
+        return new Subunit(tempSubunit);
 
     }
 

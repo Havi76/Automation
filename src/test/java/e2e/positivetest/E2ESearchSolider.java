@@ -4,17 +4,17 @@ import framwork.testrunner.ClassLevelWebRunner;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.menu.MenuBL;
-import pages.menu.MenuPage;
 
 @Test(groups = {"E2E positive test"}, suiteName = "E2E")
 @Listeners(ClassLevelWebRunner.class)
 public class E2ESearchSolider {
-    @Test
+    String personalNumber = "8778535";
+
+    @Test()
     void searchSolider() {
         new MenuBL().clickOnSearch()
-                .fillTheSearch("8778535");
-
+                .fillTheSearch(personalNumber)
+                .clickOnSearch();
     }
 }
 
-//https://kodkod-frontend.azurewebsites.net/

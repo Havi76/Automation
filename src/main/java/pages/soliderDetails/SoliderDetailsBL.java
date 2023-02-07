@@ -8,10 +8,8 @@ import pages.commendNotes.AddCommanderNoteBL;
 import pages.deleteNote.DeleteNoteBL;
 import pages.newDistributionMessage.NewDistributionMessageBL;
 import pages.newInterview.NewInterviewBL;
-
 import static com.codeborne.selenide.Condition.*;
 import static framwork.configuration.ScrollBehaviour.smooth;
-
 import static pages.newInterview.NewInterviewBL.interviewFoundFlag;
 
 public class SoliderDetailsBL {
@@ -46,7 +44,7 @@ public class SoliderDetailsBL {
         return this;
     }
 
-    public DeleteNoteBL deleteLastNote(String action){
+    public DeleteNoteBL deleteNote(String note){
         page.moreOptions().click();
         page.deleteButton().click();
         return new DeleteNoteBL();
@@ -61,7 +59,6 @@ public class SoliderDetailsBL {
     }
 
     public NewDistributionMessageBL openDistributionMessageUpdate(String name){
-        Selenide.refresh();
         page.updatesCards().find(text("הודעת תפוצה")).scrollIntoView(smooth);
         page.updatesCards().find(text("הודעת תפוצה")).click();
         page.distributionMessageUpdates().shouldHave(CollectionCondition.sizeGreaterThan(0));
@@ -79,16 +76,16 @@ public class SoliderDetailsBL {
         return new NewInterviewBL();
     }
 
-    public SoliderDetailsBL isInterviewFound(String date, String author) {
+    public SoliderDetailsBL isInterviewFound(String date, String userName) {
         ElementsCollection relevantInterviewsCollection;
         if (page.showmoreButton().exists()){
             page.showmoreButton().click();
             relevantInterviewsCollection = page.interviewsCollectiononPopUp().shouldHave(CollectionCondition.sizeGreaterThan(0))
-                    .filter(text(date)).filter(text(author));
+                    .filter(text(date)).filter(text(userName));
         }
         else
             relevantInterviewsCollection = page.interviewsCollectiononSoliderDetailsPage().shouldHave(CollectionCondition.sizeGreaterThan(0))
-                    .filter(text(date)).filter(text(author));
+                    .filter(text(date)).filter(text(userName));
         for (SelenideElement interview : relevantInterviewsCollection.shouldHave(CollectionCondition.sizeGreaterThan(0))) {
             interview.shouldBe(enabled, visible).click();
             new NewInterviewBL().checkBodyText();

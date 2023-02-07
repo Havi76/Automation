@@ -1,15 +1,13 @@
 package e2e.positivetest;
 
-import com.codeborne.selenide.Selenide;
+import database.NotificationsDAL;
 import framwork.general.DataFaker;
 import framwork.testrunner.ClassLevelWebRunner;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.menu.MenuBL;
-import pages.menu.MenuPage;
 import pages.soliderDetails.SoliderDetailsBL;
-import pages.topMenu.TopMenuBL;
-import pages.topMenu.TopMenuPage;
+
 
 @Test(groups = {"E2E positive test"}, suiteName = "E2E")
 @Listeners(ClassLevelWebRunner.class)
@@ -18,26 +16,35 @@ public class E2ESendDistributionMesseage {
     String soliderPersonalNumber = "8778535";
     String messageHeader = dataFaker.howIMetYourMotherCatchPhrase(20);
     String message = dataFaker.rickAndMorty(300);
-    String author = "";
+    String userName = "ינוב סגל";
     String sourceId = "212753743";
 
-    @Test
-    void SendDistributionMessage() {
-        author = new TopMenuBL().getName();
+    @Test(description = "Sending distribute message")
+    void sendDistributionMessage() {
         new MenuBL()
                 .clickOnActionsMenu()
                 .nevigateToDistributionMessageAction()
                 .sendHeader(messageHeader)
-                .clickOnChooseParticipates()
-//                .chooseRandomSubunit()
+                .clickOnChooseParticipates() //בוחר את עצמי בשביל לוודא שקיבלתי מייל והודעה
+                .chooseRandomSubunit()
                 .chooseSpecificSolider(soliderPersonalNumber)
                 .valMessage(message)
                 .clickOnSendMethods()
                 .pressSendButton()
                 .confirmSendMessage()
-                .exitConfirmPage()
-                .openDistributionMessageUpdate(author)
-                .ensureUpdateContent(messageHeader, message)
+                .exitConfirmPage();
+    }
+
+    @Test(description = "Ensuring distribution message has been sent", dependsOnMethods = "sendDistributionMessage")
+    void ensureDistributionMessage() {
+        new SoliderDetailsBL()
+                .openDistributionMessageUpdate(userName)
+                .ensureUpdateContent(messageHeader, message);
+    }
+
+    @Test (description = "Deleting distribution message from database according to source id", dependsOnMethods = "sendDistributionMessage")
+    void deleteDistributionMessageFromDB() {
+        new NotificationsDAL()
                 .deleteByUser(sourceId);
     }
 }
