@@ -21,7 +21,7 @@ public class SoliderDetailsPage {
     @Find(className = "Notes_fullViewNote__3meGg")
     private ElementsCollection notesListWhenOpen;
 
-    @Find(css = ".Notes_bodyIcons__DcuhI svg")
+    @Find(css = ".Notes_moreIcon__1fEuD svg")
     private SelenideElement moreOptions;
 
     @Find(text = "מחק")

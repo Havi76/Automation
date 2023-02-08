@@ -5,6 +5,7 @@ import framwork.testrunner.ClassLevelWebRunner;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.menu.MenuBL;
+import pages.soliderDetails.SoliderDetailsBL;
 
 @Test(groups = {"E2E positive test"}, suiteName = "E2E")
 @Listeners(ClassLevelWebRunner.class)
@@ -29,21 +30,13 @@ public class E2EAddCommanderNote {
 
     @Test(description = "Ensure commander note has been added", dependsOnMethods = "addCommanderNote")
     void ensureCommanderNote() {
-        new MenuBL()
-                .findSubunit(subunitName)
-                .click()
-                .findSolider(soliderName)
-                .click()
+        new SoliderDetailsBL()
                 .isNoteFound(note);
     }
 
     @Test(description = "Deleting commander note", dependsOnMethods = "addCommanderNote")
     void deleteCommanderNote() {
-        new MenuBL()
-                .findSubunit(subunitName)
-                .click()
-                .findSolider(soliderName)
-                .click()
+        new SoliderDetailsBL()
                 .deleteNote(note)
                 .approveDelete();
     }

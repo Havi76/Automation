@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @Accessors(fluent = true)
 public class Notifications {
     @Column("Id")
-    private Long id;
+    private Integer id;
 
     @Column("Action_Type")
     private String actionType;
@@ -24,4 +24,7 @@ public class Notifications {
 
     @Column("Seen_Ind")
     private Boolean seenIdn;
+
+    @Column("Action_Id")
+    private Integer actionId;
 }

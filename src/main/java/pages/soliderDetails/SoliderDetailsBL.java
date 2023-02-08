@@ -59,11 +59,17 @@ public class SoliderDetailsBL {
     }
 
     public NewDistributionMessageBL openDistributionMessageUpdate(String name){
-        page.updatesCards().find(text("הודעת תפוצה")).scrollIntoView(smooth);
+        page.updatesCards().find(text("הודעת תפוצה")).should(visible, enabled).scrollIntoView(smooth);
         page.updatesCards().find(text("הודעת תפוצה")).click();
         page.distributionMessageUpdates().shouldHave(CollectionCondition.sizeGreaterThan(0));
         page.distributionMessageUpdates().find(text(name)).click();
         return new NewDistributionMessageBL();
+    }
+
+    public SoliderDetailsBL closeDistributionMessageUpdate(){
+        page.updatesCards().find(text("הודעת תפוצה")).should(visible, enabled).scrollIntoView(smooth);
+        page.updatesCards().find(text("הודעת תפוצה")).click();
+        return this;
     }
 
     public SoliderDetailsBL pressOnHavadAndInterviews() {
