@@ -23,7 +23,6 @@ public class E2EDistributionMessage {
     String userName = "ינוב סגל";
 
     @Test(description = "Sending distribute message")
-    @Order(1)
     void sendDistributionMessage() {
         new MenuBL()
                 .clickOnActionsMenu()
@@ -37,11 +36,12 @@ public class E2EDistributionMessage {
                 .pressSendButton()
                 .confirmSendMessage()
                 .exitConfirmPage();
+        System.out.println("send");
     }
 
-    @Test(description = "Ensuring distribution message has been sent", dependsOnMethods = "sendDistributionMessage")
-    @Order(2)
+    @Test(description = "Ensuring distribution message has been sent", dependsOnMethods = "sendDistributionMessage", priority = 1)
     void ensureDistributionMessage() {
+        System.out.println("ensure");
         new SoliderDetailsBL()
                 .openDistributionMessageUpdate(userName)
                 .ensureUpdateContent(messageHeader, message)
@@ -49,16 +49,15 @@ public class E2EDistributionMessage {
                 .closeDistributionMessageUpdate();
     }
 
-    @Test (description = "Deleting distribution message from database by source id", dependsOnMethods = "sendDistributionMessage")
-    @Order(3)
+    @Test (description = "Deleting distribution message from database by source id", dependsOnMethods = "sendDistributionMessage", priority = 2)
     void deleteDistributionMessageFromDB() {
+        System.out.println("delete");
         new SoliderDetailsBL()
                 .openDistributionMessageUpdate(userName)
                 .ensureUpdateContent(messageHeader, message)
                 .getActionId()
                 .exitUpdate()
                 .closeDistributionMessageUpdate();
-        System.out.println(actionId);
         new NotificationsDAL()
                 .deleteNotificationByActionId(actionId);
         new ActionsDAL()
