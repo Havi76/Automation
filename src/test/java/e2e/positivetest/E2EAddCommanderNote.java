@@ -28,13 +28,13 @@ public class E2EAddCommanderNote {
                 .saveNote();
     }
 
-    @Test(description = "Ensure commander note has been added", dependsOnMethods = "addCommanderNote")
+    @Test(description = "Ensure commander note has been added", dependsOnMethods = "addCommanderNote", priority = 1)
     void ensureCommanderNote() {
         new SoliderDetailsBL()
                 .isNoteFound(note);
     }
 
-    @Test(description = "Deleting commander note", dependsOnMethods = "addCommanderNote")
+    @Test(description = "Deleting commander note", dependsOnMethods = "addCommanderNote", priority = 2)
     void deleteCommanderNote() {
         new SoliderDetailsBL()
                 .deleteNote(note)
