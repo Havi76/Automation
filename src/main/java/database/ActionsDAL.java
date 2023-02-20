@@ -1,10 +1,8 @@
 package database;
 
-import com.beust.ah.A;
-import framwork.util.PrimaryKeyDAL;
+import framework.util.PrimaryKeyDAL;
 import models.Actions;
 
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,9 +17,9 @@ public class ActionsDAL extends PrimaryKeyDAL<Actions, Long> {
     }
 
     @Override
-    protected Map<String, Object> filters(Actions actions) {
+    protected Map<String, Object> filters(Actions action) {
         return new HashMap<>() {{
-            put("Id", actions.actionId());
+            put("Id", action.actionId());
         }};
     }
 

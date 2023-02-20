@@ -2,7 +2,7 @@ package pages.newDistributionMessage;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import framwork.annotations.locators.Find;
+import framework.annotations.locators.Find;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 

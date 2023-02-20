@@ -1,8 +1,8 @@
 package models;
 
-import framwork.annotations.database.Column;
-import framwork.annotations.database.Database;
-import framwork.annotations.database.Table;
+import framework.annotations.database.Column;
+import framework.annotations.database.Database;
+import framework.annotations.database.Table;
 import lombok.Data;
 import lombok.experimental.Accessors;
 

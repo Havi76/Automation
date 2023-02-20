@@ -1,7 +1,7 @@
 package pages.datePicker;
 
 import com.codeborne.selenide.ElementsCollection;
-import framwork.annotations.locators.Find;
+import framework.annotations.locators.Find;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 

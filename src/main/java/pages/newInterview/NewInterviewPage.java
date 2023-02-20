@@ -2,7 +2,7 @@ package pages.newInterview;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import framwork.annotations.locators.Find;
+import framework.annotations.locators.Find;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 
@@ -19,10 +19,10 @@ public class NewInterviewPage {
     private ElementsCollection topicOptions;
 
     @Find(className = "ExpandedInterview_contentBoxDesktop__1D2X1")
-    private SelenideElement interviewBodyText;
+    private SelenideElement interviewContent;
 
     @Find(className = "ExpandedInterview_conclusionBoxDesktop__3Zh3V")
-    private SelenideElement interviewConclusionText;
+    private SelenideElement interviewConclusion;
 
     @Find(className = "ant-select-selection-item")
     private ElementsCollection dropDownListsofTiob;
@@ -45,4 +45,15 @@ public class NewInterviewPage {
     @Find(className = "ExpandedInterview_closeIcon__2ciaz")
     private SelenideElement exitButton;
 
+    @Find(css = ".ExpandedInterview_contentBoxDesktop__1D2X1 + div .ExpandedInterview_errorMessage__2Za1k")
+    private SelenideElement bodyErrorMessage;
+
+    @Find(css = ".ExpandedInterview_conclusionBoxDesktop__3Zh3V + div .ExpandedInterview_errorMessage__2Za1k")
+    private SelenideElement conclusionErrorMessage;
+
+    @Find(css = ".ExpandedInterview_contentBoxDesktop__1D2X1 + div :nth-last-child(1)")
+    private SelenideElement bodyCharsCount;
+
+    @Find(css = ".ExpandedInterview_conclusionBoxDesktop__3Zh3V + div :nth-last-child(1)")
+    private SelenideElement conclusionCharsCount;
 }

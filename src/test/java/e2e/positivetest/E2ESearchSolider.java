@@ -1,6 +1,6 @@
 package e2e.positivetest;
 
-import framwork.testrunner.ClassLevelWebRunner;
+import framework.testrunner.ClassLevelWebRunner;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.menu.MenuBL;

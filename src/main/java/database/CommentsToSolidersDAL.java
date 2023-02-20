@@ -1,6 +1,6 @@
 package database;
 
-import framwork.util.PrimaryKeyDAL;
+import framework.util.PrimaryKeyDAL;
 import models.CommentsToSoliders;
 
 import java.util.HashMap;
@@ -33,9 +33,7 @@ public class CommentsToSolidersDAL extends PrimaryKeyDAL<CommentsToSoliders, Lon
 
 
     public Long findLastCommentId(String misparIshi, String writerId){
-        System.out.println(super.selectAll(filters(misparIshi, writerId)));
         List<CommentsToSoliders> allComments = selectAll(filters(misparIshi, writerId));
-        System.out.println(allComments.get(allComments.size()-1).commentId());
         return allComments.get(allComments.size()-1).commentId();
     }
 

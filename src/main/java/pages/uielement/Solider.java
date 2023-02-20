@@ -1,9 +1,9 @@
 package pages.uielement;
 
 import com.codeborne.selenide.SelenideElement;
-import framwork.annotations.RootLocator;
-import framwork.annotations.locators.Find;
-import framwork.elements.UIElement;
+import framework.annotations.RootLocator;
+import framework.annotations.locators.Find;
+import framework.elements.UIElement;
 import pages.soliderDetails.SoliderDetailsBL;
 
 @RootLocator(".SoldierRect_SoldierWind__3BRIq")

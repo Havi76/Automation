@@ -2,9 +2,8 @@ package e2e.positivetest;
 
 import database.ActionsDAL;
 import database.NotificationsDAL;
-import framwork.general.DataFaker;
-import framwork.testrunner.ClassLevelWebRunner;
-import org.junit.jupiter.api.Order;
+import framework.general.DataFaker;
+import framework.testrunner.ClassLevelWebRunner;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.menu.MenuBL;

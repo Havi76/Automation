@@ -1,18 +1,14 @@
 package pages.menu;
 
-import com.codeborne.selenide.CollectionCondition;
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import pages.actionsMenu.ActionsMenuBL;
-import pages.actionsMenu.ActionsMenuPage;
-import pages.soliderDetails.SoliderDetailsBL;
 import pages.uielement.Solider;
 import pages.uielement.Subunit;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
-import static framwork.configuration.ScrollBehaviour.smooth;
+import static framework.configuration.ScrollBehaviour.smooth;
 
 public class MenuBL {
     private final MenuPage page = Selenide.page(MenuPage.class);
@@ -44,8 +40,7 @@ public class MenuBL {
     }
 
     public Solider findSolider(String soliderName) {
-        page.soliderCard().should(exist);
-        page.soliderCard().shouldHave(text(soliderName));
-        return new Solider(page.soliderCard());
+        page.solidersCards().shouldHave(sizeGreaterThan(0));
+        return new Solider(page.solidersCards().find(text(soliderName)));
     }
 }

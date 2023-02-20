@@ -3,11 +3,10 @@ package pages.uielement;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import framwork.annotations.RootLocator;
-import framwork.annotations.locators.Find;
-import framwork.elements.UIElement;
+import framework.annotations.RootLocator;
+import framework.annotations.locators.Find;
+import framework.elements.UIElement;
 import pages.menu.MenuBL;
-import pages.menu.MenuPage;
 
 
 @RootLocator(".frameworkRect_PlugaRectangleDesktop__kleu6")

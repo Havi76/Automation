@@ -2,7 +2,7 @@ package pages.soliderDetails;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import framwork.annotations.locators.Find;
+import framework.annotations.locators.Find;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 
@@ -53,4 +53,7 @@ public class SoliderDetailsPage {
 
     @Find(className = "Interview_interviewDate__3-tYQ")
     private SelenideElement interviewDate;
+
+    @Find(className = "Interviews_closeIconHolder__q4eh8")
+    private SelenideElement closeShowingMoreButton;
 }

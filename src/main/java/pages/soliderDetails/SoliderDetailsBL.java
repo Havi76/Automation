@@ -9,11 +9,12 @@ import pages.deleteNote.DeleteNoteBL;
 import pages.newDistributionMessage.NewDistributionMessageBL;
 import pages.newInterview.NewInterviewBL;
 import static com.codeborne.selenide.Condition.*;
-import static framwork.configuration.ScrollBehaviour.smooth;
+import static framework.configuration.ScrollBehaviour.smooth;
 import static pages.newInterview.NewInterviewBL.interviewFoundFlag;
 
 public class SoliderDetailsBL {
     private final SoliderDetailsPage page = Selenide.page(SoliderDetailsPage.class);
+    static boolean showingMore = false;
 
     public AddCommanderNoteBL clickOnNewCommanderNote() {
         page.addCommanderNote().click();
@@ -86,6 +87,7 @@ public class SoliderDetailsBL {
         ElementsCollection relevantInterviewsCollection;
         if (page.showmoreButton().exists()){
             page.showmoreButton().click();
+            showingMore = true;
             relevantInterviewsCollection = page.interviewsCollectiononPopUp().shouldHave(CollectionCondition.sizeGreaterThan(0))
                     .filter(text(date)).filter(text(userName));
         }
@@ -94,11 +96,17 @@ public class SoliderDetailsBL {
                     .filter(text(date)).filter(text(userName));
         for (SelenideElement interview : relevantInterviewsCollection.shouldHave(CollectionCondition.sizeGreaterThan(0))) {
             interview.shouldBe(enabled, visible).click();
-            new NewInterviewBL().checkBodyText();
+            new NewInterviewBL().checkInterviewContent();
             if (interviewFoundFlag)
                 return this;
         }
         assert interviewFoundFlag;
         return this;
+    }
+
+    public void closeShowingMoreIfOpen() {
+        if (showingMore)
+            page.closeShowingMoreButton().click();
+        showingMore = false;
     }
 }

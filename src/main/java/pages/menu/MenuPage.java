@@ -2,7 +2,7 @@ package pages.menu;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import framwork.annotations.locators.Find;
+import framework.annotations.locators.Find;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 
@@ -61,7 +61,7 @@ public class MenuPage {
     private ElementsCollection subunitList;
 
     @Find(className = "SoldierRect_SoldierWind__3BRIq")
-    private SelenideElement soliderCard;
+    private ElementsCollection solidersCards;
 
 //    @Find(css = "LandingRight_desktopScrollContent__1NetZ div:nth-child()")
 //    private SelenideElement ;

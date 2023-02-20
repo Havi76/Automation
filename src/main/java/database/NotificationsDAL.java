@@ -1,12 +1,10 @@
 package database;
 
-import framwork.util.PrimaryKeyDAL;
+import framework.util.PrimaryKeyDAL;
 import models.Notifications;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static pages.newDistributionMessage.NewDistributionMessageBL.actionId;
 
 public class NotificationsDAL extends PrimaryKeyDAL<Notifications, Integer> {
     private static NotificationsDAL instance;

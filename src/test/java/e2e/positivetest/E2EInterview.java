@@ -1,6 +1,7 @@
 package e2e.positivetest;
 
-import framwork.testrunner.ClassLevelWebRunner;
+import database.InterviewsDAL;
+import framework.testrunner.ClassLevelWebRunner;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.Story;
@@ -17,6 +18,7 @@ public class E2EInterview {
     String soliderName = "עמיחי מרנס";
     String date = "7.2.23";
     String userName = "ינוב סגל";
+    String interviewerId = "212753743";
 
     @Feature("ראיונות אישיים")
     @Story("הזנת ראיון אישי לחייל")
@@ -35,10 +37,17 @@ public class E2EInterview {
                 .saveInterview();
     }
 
-    @Test(description = "Ensure interview has been added", dependsOnMethods = "addInterview")
+    @Test(description = "Ensuring interview has been added", dependsOnMethods = "addInterview")
     void ensureInterview() {
         new SoliderDetailsBL()
                 .pressOnHavadAndInterviews()
                 .isInterviewFound(date, userName);
+        new SoliderDetailsBL().closeShowingMoreIfOpen();
+
+    }
+
+    @Test(description = "Deleting interview from DB", dependsOnMethods = "addInterview", priority = 1)
+    void deleteInterview() {
+        InterviewsDAL.instance().deleteLastInterviewByInterviewer(interviewerId);
     }
 }
