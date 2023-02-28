@@ -1,14 +1,12 @@
 package pages.datePicker;
 
-import com.codeborne.selenide.CollectionCondition;
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import pages.commendNotes.AddCommanderNoteBL;
-import pages.commendNotes.AddCommanderNotePage;
-import pages.datePicker.DatePickerPage;
 
 import java.util.Random;
 
-import static com.codeborne.selenide.Condition.exist;
+import static com.codeborne.selenide.Condition.*;
 
 public class DatePickerBL {
     private final DatePickerPage page =
@@ -16,9 +14,28 @@ public class DatePickerBL {
     Random random = new Random();
 
     public AddCommanderNoteBL chooseRandomDate(){
-        page.enabledDates().get(random.nextInt
-                (page.enabledDates().size()-1)).click();
+        page.enabledDays().get(random.nextInt
+                (page.enabledDays().size()-1)).click();
         return new AddCommanderNoteBL();
     }
 
+    public DatePickerBL checkDatesLimitations(){
+        checkFirstFriday();
+        checkLastSaturday();
+        checkToday();
+        return this;
+    }
+
+    public void checkFirstFriday(){
+        page.allDays().get(5).shouldHave(cssClass("DatePickerCalendar_disabledCell__3F9L-"));
+    }
+
+    public void checkLastSaturday(){
+        page.allDays().get(34).shouldHave(cssClass("DatePickerCalendar_disabledCell__3F9L-"));
+    }
+
+    public void checkToday(){
+        page.todayCell().shouldBe(exist);
+    }
 }
+

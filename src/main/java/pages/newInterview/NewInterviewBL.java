@@ -20,6 +20,7 @@ public class NewInterviewBL {
     public static String topic;
     public static Boolean interviewFoundFlag = false;
     public static String interviewContent;
+    public static String interviewConclusion;
 
     public String generateString(int size) {
         return new String(new char[size]).replace("\0","A");
@@ -34,8 +35,10 @@ public class NewInterviewBL {
     }
 
     public NewInterviewBL fillInterview(){
-        fillInterviewContent(dataFaker.howIMetYourMotherQuote(500));
-        fillInterviewConclusion(dataFaker.gameOfThrones(200));
+        interviewContent = dataFaker.howIMetYourMotherQuote(500);
+        fillInterviewContent(interviewContent);
+        interviewConclusion = dataFaker.gameOfThrones(200);
+        fillInterviewConclusion(interviewConclusion);
         if (topic.equals("טיוב סד\"כ")) {
             page.dropDownListsofTiob().get(0).click();
             page.chooseRecommendationChildren().get(random.nextInt(3)).click();
@@ -52,13 +55,23 @@ public class NewInterviewBL {
         return new SoliderDetailsBL();
     }
 
-    public void checkInterviewContent(){
+    public NewInterviewBL checkTopic(){
+        page.topicSelect().should(text(topic));
+        return this;
+    }
+
+    public NewInterviewBL checkInterviewContent(){
         if (interviewContent == null)
             interviewContent = defualtInterviewContent;
         if (page.interviewContent().should(visible, enabled).text().equals(interviewContent)) {
+            System.out.println(page.interviewContent().text() + interviewContent);
             interviewFoundFlag = true;
         }
-        page.exitButton().shouldBe(enabled, visible).click();
+        return this;
+    }
+
+    public void checkInterviewConclusion(){
+        page.interviewConclusion().should(text(interviewConclusion));
     }
 
     public void fillInterviewContent(String interviewContent){
@@ -79,7 +92,7 @@ public class NewInterviewBL {
     }
 
     public void checkSaveDisabled() {
-        page.saveButton().shouldNotBe(enabled);
+        page.saveButton().shouldBe(disabled);
     }
 
     public void chooseRandomTopicWithoutLast() {
@@ -108,6 +121,17 @@ public class NewInterviewBL {
         page.exitButton().shouldBe(enabled, visible).click();
         new DeleteNoteBL().approveDelete();
         return new SoliderDetailsBL();
+    }
+
+    public void exitExistingInterview(){
+        page.exitButton().shouldBe(enabled, visible).click();
+
+    }
+
+    public NewInterviewBL exitNewInterviewThenRegret(){
+        page.exitButton().shouldBe(enabled, visible).click();
+        new DeleteNoteBL().rejectDelete();
+        return this;
     }
 
     public NewInterviewBL negativeContentAndConclusion(String interviewContent, String interviewConclusion) {

@@ -63,6 +63,9 @@ public class MenuPage {
     @Find(className = "SoldierRect_SoldierWind__3BRIq")
     private ElementsCollection solidersCards;
 
+    @Find(css = ".UnitRect_sideUnitIcon__vME1t svg")
+    private ElementsCollection menuIcons;
+
 //    @Find(css = "LandingRight_desktopScrollContent__1NetZ div:nth-child()")
 //    private SelenideElement ;
 

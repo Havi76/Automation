@@ -4,6 +4,7 @@ import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import pages.attendanceInfo.AttendanceInfoBL;
 import pages.commendNotes.AddCommanderNoteBL;
 import pages.deleteNote.DeleteNoteBL;
 import pages.newDistributionMessage.NewDistributionMessageBL;
@@ -11,10 +12,12 @@ import pages.newInterview.NewInterviewBL;
 import static com.codeborne.selenide.Condition.*;
 import static framework.configuration.ScrollBehaviour.smooth;
 import static pages.newInterview.NewInterviewBL.interviewFoundFlag;
+import static pages.uielement.RamzorGraph.chosenRecommendationValue;
 
 public class SoliderDetailsBL {
     private final SoliderDetailsPage page = Selenide.page(SoliderDetailsPage.class);
     static boolean showingMore = false;
+    public static Boolean noteFoundFlag = false;
 
     public AddCommanderNoteBL clickOnNewCommanderNote() {
         page.addCommanderNote().click();
@@ -29,26 +32,36 @@ public class SoliderDetailsBL {
         return this;
     }
 
-    public SoliderDetailsBL isNoteFound(String note){
+    public SoliderDetailsBL isNoteFound(String note, Boolean dontFindFlag){
         page.notesListWhenClosed().shouldBe
                 (CollectionCondition.sizeGreaterThan(0));
         if (page.moreNotesSign().exists()){
             page.moreNotesSign().click();
-            page.notesListWhenOpen().filter(text(note))
-                    .shouldHave(CollectionCondition.sizeGreaterThan(0));
+            if (!page.notesListWhenOpen().filter(text(note)).isEmpty()){
+                    noteFoundFlag = true;
+                    return this;
+            }
             page.exitButton().click();
         }
         else {
-            page.notesListWhenClosed().filter(text(note))
-                    .shouldHave(CollectionCondition.sizeGreaterThan(0));
+            if (!page.notesListWhenClosed().filter(text(note)).isEmpty()){
+                noteFoundFlag = true;
+                return this;
+            }
         }
+        assert dontFindFlag || noteFoundFlag;
         return this;
     }
 
     public DeleteNoteBL deleteNote(String note){
-        page.moreOptions().click();
+        page.moreOptions().get(2).click();
         page.deleteButton().click();
         return new DeleteNoteBL();
+    }
+
+    public SoliderDetailsBL exitClick(){
+        page.exitButton().click();
+        return new SoliderDetailsBL();
     }
 
     public NewDistributionMessageBL openLastDistributionMessageUpdate(){
@@ -83,7 +96,7 @@ public class SoliderDetailsBL {
         return new NewInterviewBL();
     }
 
-    public SoliderDetailsBL isInterviewFound(String date, String userName) {
+    public SoliderDetailsBL isInterviewFound(String date, String userName, Boolean dontFindFlag) {
         ElementsCollection relevantInterviewsCollection;
         if (page.showmoreButton().exists()){
             page.showmoreButton().click();
@@ -96,11 +109,13 @@ public class SoliderDetailsBL {
                     .filter(text(date)).filter(text(userName));
         for (SelenideElement interview : relevantInterviewsCollection.shouldHave(CollectionCondition.sizeGreaterThan(0))) {
             interview.shouldBe(enabled, visible).click();
-            new NewInterviewBL().checkInterviewContent();
+            new NewInterviewBL()
+                    .checkInterviewContent()
+                    .exitExistingInterview();
             if (interviewFoundFlag)
                 return this;
         }
-        assert interviewFoundFlag;
+        assert dontFindFlag || interviewFoundFlag;
         return this;
     }
 
@@ -108,5 +123,16 @@ public class SoliderDetailsBL {
         if (showingMore)
             page.closeShowingMoreButton().click();
         showingMore = false;
+    }
+
+    public AttendanceInfoBL clickAttendanceInfo(){
+        String attendanceInfoValue = page.attendanceInfoValue().text();
+        page.attendanceInfoValue().click();
+        return new AttendanceInfoBL(attendanceInfoValue, page.isCommanderGrade().exists());
+    }
+
+    public SoliderDetailsBL ensureAttendanceInfo(){
+        page.attendanceInfoValue().shouldHave(text(chosenRecommendationValue));
+        return this;
     }
 }

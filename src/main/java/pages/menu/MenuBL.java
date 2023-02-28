@@ -43,4 +43,9 @@ public class MenuBL {
         page.solidersCards().shouldHave(sizeGreaterThan(0));
         return new Solider(page.solidersCards().find(text(soliderName)));
     }
+
+    public MenuBL returnToMainPage() {
+        page.menuIcons().get(0).click();
+        return this;
+    }
 }

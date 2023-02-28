@@ -1,0 +1,4 @@
+INFO    2023-02-28 09:43:01,545 [main] com.automation.remarks.video.recorder.monte.MonteRecorder  - Recording started
+INFO    2023-02-28 09:43:19,255 [main] com.automation.remarks.video.recorder.monte.MonteRecorder  - Recording finished to C:\Users\yahav\IdeaProjects\Automation\video\E2E_negative_test_of_add_commander_note_recording_2023_28_02_09_43_19.avi
+INFO    2023-02-28 09:43:19,255 [main] com.automation.remarks.video.RecordingUtils  - No jenkinsUrl variable found.
+INFO    2023-02-28 09:43:19,266 [main] com.automation.remarks.video.RecordingUtils  - No video on success test

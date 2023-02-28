@@ -2,17 +2,17 @@
 <suite name="PositiveTestsE2E" verbose="10" parallel="tests" thread-count="1">
     <test name="E2EAddCommanderNote" enabled="true">
         <classes>
-            <class name="e2e.positivetest.E2EAddCommanderNote"/>
+            <class name="e2e.positivetests.E2EAddCommanderNote"/>
         </classes>
     </test>
     <test name="E2EAddInterview" enabled="true">
         <classes>
-            <class name="e2e.positivetest.E2EInterview"/>
+            <class name="e2e.positivetests.E2EInterview"/>
         </classes>
     </test>
     <test name="E2ESendDistributionMessage" enabled="true">
         <classes>
-            <class name="e2e.positivetest.E2EDistributionMessage"/>
+            <class name="e2e.positivetests.E2EDistributionMessage"/>
         </classes>
     </test>
 </suite>

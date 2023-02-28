@@ -12,7 +12,7 @@ public class ClassLevelMobileWebRunner implements IInvokedMethodListener, IClass
 
     @Override
     public void onBeforeClass(ITestClass testClass) {
-        Configuration.timeout = 20000;
+        Configuration.timeout = 30000;
 //        Configuration.browser = DriverProviderMobileWeb.class.getCanonicalName();
         System.setProperty("chromeoptions.mobileEmulation", "deviceName=Nexus 5");
         Configuration.holdBrowserOpen = true;

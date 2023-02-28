@@ -14,4 +14,7 @@ public class DeleteNotePage {
 
     @Find(className = "Notification_blueButton__q0TEz")
     private SelenideElement deleteApproval;
+
+    @Find(className = "Notification_whiteButton__d2POB")
+    private SelenideElement deleteRejection;
 }

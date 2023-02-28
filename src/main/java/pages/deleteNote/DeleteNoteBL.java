@@ -2,6 +2,7 @@ package pages.deleteNote;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
+import pages.newInterview.NewInterviewBL;
 import pages.soliderDetails.SoliderDetailsBL;
 
 public class DeleteNoteBL {
@@ -10,5 +11,9 @@ public class DeleteNoteBL {
     public SoliderDetailsBL approveDelete(){
         page.deleteApproval().click();
         return new SoliderDetailsBL();
+    }
+
+    public void rejectDelete(){
+        page.deleteRejection().click();
     }
 }

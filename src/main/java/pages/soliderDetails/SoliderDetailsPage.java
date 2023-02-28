@@ -15,14 +15,17 @@ public class SoliderDetailsPage {
     @Find(css = ".Notes_body__ZbSnt .Notes_note__WyTNF")
     private ElementsCollection notesListWhenClosed;
 
-    @Find(className = "Notes_More__19olI")
+    @Find(className = "ShowMore_extraRow__YwXyC")
     private SelenideElement moreNotesSign;
 
     @Find(className = "Notes_fullViewNote__3meGg")
     private ElementsCollection notesListWhenOpen;
 
-    @Find(css = ".Notes_moreIcon__1fEuD svg")
-    private SelenideElement moreOptions;
+//    @Find(css = ".Notes_moreIcon__1fEuD svg")
+//    private SelenideElement moreOptions;
+
+    @Find(className = "Notes_moreIcon__1fEuD")
+    private ElementsCollection moreOptions;
 
     @Find(text = "מחק")
     private SelenideElement deleteButton;
@@ -56,4 +59,10 @@ public class SoliderDetailsPage {
 
     @Find(className = "Interviews_closeIconHolder__q4eh8")
     private SelenideElement closeShowingMoreButton;
+
+    @Find(className = "SoldierSummaryDesktop_attendanceValue__2Xikz")
+    private SelenideElement attendanceInfoValue;
+
+    @Find(className = "SoldierSummaryDesktop_isCommanderGrade__10dZp")
+    private SelenideElement isCommanderGrade;
 }

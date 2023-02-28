@@ -20,4 +20,6 @@ public class ChooseParticiptesPage {
 
     @Find(className = "GenericButton_Button__2PbBa")
     private SelenideElement chooseButton;
+
+
 }

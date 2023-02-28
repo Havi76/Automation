@@ -19,4 +19,20 @@ public class AddCommanderNotePage {
 
     @Find(className = "DatePickerInput_calendarIcon__2E49_")
     private SelenideElement datePickerButton;
+
+    @Find(css = ".DatePickerInput_calendarIcon__2E49_ svg")
+    private SelenideElement datePickerSvg;
+
+    @Find(className = "Notes_ModalText__3MnLp")
+    private SelenideElement commanderNoteErrorMessage;
+
+    @Find(className = "Notes_whiteButton___IEgE")
+    private SelenideElement cancelButton;
+
+    @Find(className = "Notification_whiteButton__d2POB")
+    private SelenideElement exitWithoutSaveNoButton;
+
+    @Find(className = "Notification_blueButton__q0TEz")
+    private SelenideElement exitWithoutSaveYesButton;
+
 }

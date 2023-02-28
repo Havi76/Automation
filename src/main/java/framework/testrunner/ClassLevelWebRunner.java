@@ -14,7 +14,7 @@ import org.testng.*;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-public class ClassLevelWebRunner implements IInvokedMethodListener, IClassListener, ISuiteListener {
+public class ClassLevelWebRunner implements IInvokedMethodListener, IClassListener, ISuiteListener, ITestListener {
     static String massageBody;
 
     @Override
@@ -49,4 +49,10 @@ public class ClassLevelWebRunner implements IInvokedMethodListener, IClassListen
 
         monitoringMail.sendMail(TestConfig.server, TestConfig.from, TestConfig.to, TestConfig.subject, massageBody);
     }
+
+//    public void onTestFailure(ITestResult iTestResult, String url){
+//        WebDriver driver = WebDriverRunner.getWebDriver();
+//        driver.navigate().to(url);
+//
+//    }
 }
