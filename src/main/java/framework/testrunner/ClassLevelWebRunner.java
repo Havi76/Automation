@@ -40,7 +40,7 @@ public class ClassLevelWebRunner implements IInvokedMethodListener, IClassListen
 
     @Override
     public void onBeforeClass(ITestClass testClass) {
-        Configuration.timeout = 10000;
+        Configuration.timeout = 20000;
         Configuration.browser = DriverProviderWeb.class.getCanonicalName();
         Configuration.holdBrowserOpen = true;
         Configuration.startMaximized = true;

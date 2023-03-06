@@ -1,0 +1,1 @@
+INFO    2023-03-02 16:48:08,612 [main] com.automation.remarks.video.recorder.monte.MonteRecorder  - Recording started

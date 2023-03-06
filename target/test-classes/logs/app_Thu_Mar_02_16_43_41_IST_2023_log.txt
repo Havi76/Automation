@@ -1,0 +1,9 @@
+INFO    2023-03-02 16:43:48,777 [main] e2e.positivetests.E2EAddCommanderNote  - The test of add commander note started
+INFO    2023-03-02 16:44:07,604 [main] e2e.positivetests.E2EAddCommanderNote  - The test of add commander note finished
+INFO    2023-03-02 16:44:08,118 [main] com.automation.remarks.video.recorder.monte.MonteRecorder  - Recording finished to C:\Users\yahav\IdeaProjects\Automation\video\E2E_test_of_add_commander_note_recording_2023_02_03_16_44_08.avi
+INFO    2023-03-02 16:44:08,118 [main] com.automation.remarks.video.RecordingUtils  - No jenkinsUrl variable found.
+INFO    2023-03-02 16:44:08,125 [main] com.automation.remarks.video.RecordingUtils  - No video on success test
+INFO    2023-03-02 16:44:08,160 [main] com.automation.remarks.video.recorder.monte.MonteRecorder  - Recording started
+INFO    2023-03-02 16:44:09,879 [main] com.automation.remarks.video.recorder.monte.MonteRecorder  - Recording finished to C:\Users\yahav\IdeaProjects\Automation\video\E2E_test_of_ensure_add_commander_note_recording_2023_02_03_16_44_09.avi
+INFO    2023-03-02 16:44:09,880 [main] com.automation.remarks.video.RecordingUtils  - No jenkinsUrl variable found.
+INFO    2023-03-02 16:44:09,883 [main] com.automation.remarks.video.RecordingUtils  - No video on success test
