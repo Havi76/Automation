@@ -46,12 +46,10 @@ public class NewDistributionMessageBL {
         return this;
     }
 
-    //לתקן
     public NewDistributionMessageBL clickOnSendMethods(){
-        int sms = 0;
-        int email = 1;
-        page.messageSendMethods().get(sms).click();
-        page.messageSendMethods().get(email).click();
+        for (int i = 0; i < 2; i++) {
+            page.messageSendMethods().get(i).click();
+        }
         return this;
     }
 
