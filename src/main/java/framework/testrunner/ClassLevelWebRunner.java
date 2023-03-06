@@ -81,20 +81,10 @@ public class ClassLevelWebRunner implements IInvokedMethodListener, IClassListen
         return iTestRusult.getMethod().getConstructorOrMethod().getName();
     }
 
-    @Attachment(value = "Page screenshot", type = "image/png")
-    public byte[] saveScreenshotPNG(WebDriver driver) {
-        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-    }
-
     @Attachment
     private void takeScreenshot(WebDriver webDriver) throws IOException {
         File screenshotAs = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
         Allure.addAttachment("Screenshot", FileUtils.openInputStream(screenshotAs));
-    }
-
-    @Attachment(value = "Page screenshot", type = "image/png")
-    public byte[] saveScreenshotPNG(byte[] screenShot) {
-        return screenShot;
     }
 
 
