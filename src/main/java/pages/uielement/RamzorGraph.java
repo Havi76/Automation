@@ -36,13 +36,13 @@ public class RamzorGraph extends UIElement {
         super(self);
     }
 
-    public AttendanceInfoBL checkSystemRecommendation() {
+    public AttendanceInfoBL checkRecommendation() {
             chosenRecommendation.shouldHave(text(attendanceInfoValue));
         return new AttendanceInfoBL();
     }
 
     public AttendanceInfoBL chooseRandomRecommendation(){
-        notChosenRecommendation.get(random.nextInt(2)).click();
+        notChosenRecommendation.get(random.nextInt(notChosenRecommendation.size())).click();
         chosenRecommendationValue = chosenRecommendation.text();
         return new AttendanceInfoBL();
     }

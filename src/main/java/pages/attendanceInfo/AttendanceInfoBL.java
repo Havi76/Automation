@@ -35,14 +35,14 @@ public class AttendanceInfoBL {
                 this.attendanceInfoValue);
     }
 
-    public AttendanceInfoBL chooseRandomRecommendation(){
+    public AttendanceInfoBL chooseCommanderRandomRecommendation(){
         new RamzorGraph(page.ramzorGraphsWrappers().get(COMMANDER_CHOSEN_RECOMMENDATION)).chooseRandomRecommendation();
         return this;
     }
 
     public AttendanceInfoBL chooseRandomReason() {
         page.dropDownList().click();
-        page.dropDownListOptions().get(random.nextInt(6)).click();
+        page.dropDownListOptions().get(random.nextInt(page.dropDownListOptions().size())).click();
         return this;
     }
 

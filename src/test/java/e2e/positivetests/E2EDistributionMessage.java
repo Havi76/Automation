@@ -4,6 +4,7 @@ import database.ActionsDAL;
 import database.NotificationsDAL;
 import framework.general.DataFaker;
 import framework.testrunner.ClassLevelWebRunner;
+import io.qameta.allure.Attachment;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.Story;
@@ -28,14 +29,15 @@ public class E2EDistributionMessage {
     @Story("שליחת הודעת תפוצה")
     @Severity(CRITICAL)
     @Test(description = "Sending distribute message")
+    @Attachment
     void sendDistributionMessage() {
         new MenuBL()
                 .clickOnActionsMenu()
                 .nevigateToDistributionMessageAction()
                 .sendHeader(messageHeader)
-                .clickOnChooseParticipates() //בוחר את עצמי בשביל לוודא שקיבלתי מייל והודעה
+                .clickOnChooseParticipates()
                 .chooseRandomSubunit()
-                .chooseSpecificSolider(SOLIDER_PERSONAL_NUMBER)
+                .chooseSpecificSolider(SOLIDER_PERSONAL_NUMBER)//בוחר את עצמי בשביל לוודא שקיבלתי מייל והודעה
                 .valMessage(message)
                 .clickOnSendMethods()
                 .pressSendButton()

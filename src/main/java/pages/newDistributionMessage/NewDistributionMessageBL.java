@@ -1,9 +1,11 @@
 package pages.newDistributionMessage;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Screenshots;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import database.NotificationsDAL;
+import io.qameta.allure.Step;
 import lombok.SneakyThrows;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
@@ -24,6 +26,7 @@ public class NewDistributionMessageBL {
     Random random = new Random();
     public static int actionId;
 
+    @Step("Send Header: {0}")
     public NewDistributionMessageBL sendHeader(String headerText) {
         page.topTitle().should(Condition.text("הודעת תפוצה"));
         page.headerText().clear();
@@ -36,12 +39,14 @@ public class NewDistributionMessageBL {
         return new ChooseParticiptesBL();
     }
 
+    @Step("Send message: {0}")
     public NewDistributionMessageBL valMessage(String message) {
         page.textArea().clear();
         page.textArea().val(message);
         return this;
     }
 
+    //לתקן
     public NewDistributionMessageBL clickOnSendMethods(){
         int sms = 0;
         int email = 1;

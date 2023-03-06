@@ -3,6 +3,7 @@ package Sandbox;
 import e2e.positivetests.E2EAddCommanderNote;
 import e2e.positivetests.E2EInterview;
 import framework.testrunner.ClassLevelWebRunner;
+import io.qameta.allure.Attachment;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.menu.MenuBL;
@@ -18,12 +19,13 @@ public class Tests {
     String interviewerId = "212753743";
 
     @Test
+    @Attachment
     void e2eTest() {
         new MenuBL()
                 .findSubunit(subunitName)
                 .click()
-                .findSolider(soliderName)
-                .click();
+                .findSolider(soliderName);
+//                .click();
         new SoliderDetailsBL()
                 .clickOnNewCommanderNote()
                 .cancelButtonClickTextEmpty()

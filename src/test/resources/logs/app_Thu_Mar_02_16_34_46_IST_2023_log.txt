@@ -1,0 +1,1 @@
+INFO    2023-03-02 16:34:54,705 [main] e2e.positivetests.E2EAddCommanderNote  - The test of add commander note started

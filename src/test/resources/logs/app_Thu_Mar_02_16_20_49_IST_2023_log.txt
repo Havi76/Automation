@@ -1,0 +1,6 @@
+INFO    2023-03-02 16:20:56,276 [main] e2e.positivetests.E2EAddCommanderNote  - The test of add commander note started
+INFO    2023-03-02 16:21:15,207 [main] e2e.positivetests.E2EAddCommanderNote  - The test of add commander note finished
+INFO    2023-03-02 16:21:15,687 [main] com.automation.remarks.video.RecordingUtils  - No jenkinsUrl variable found.
+INFO    2023-03-02 16:21:15,691 [main] com.automation.remarks.video.RecordingUtils  - No video on success test
+INFO    2023-03-02 16:21:17,556 [main] com.automation.remarks.video.RecordingUtils  - No jenkinsUrl variable found.
+INFO    2023-03-02 16:21:17,560 [main] com.automation.remarks.video.RecordingUtils  - No video on success test

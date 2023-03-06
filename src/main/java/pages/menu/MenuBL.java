@@ -2,6 +2,7 @@ package pages.menu;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import pages.actionsMenu.ActionsMenuBL;
 import pages.uielement.Solider;
 import pages.uielement.Subunit;
@@ -28,6 +29,7 @@ public class MenuBL {
         return this;
     }
 
+    @Step
     public Subunit findSubunit(String subunit) {
         page.unitTitle().shouldHave(text("הגדוד שלי"));
         page.subunitList().shouldHave(sizeGreaterThan(0));
@@ -39,6 +41,7 @@ public class MenuBL {
 
     }
 
+    @Step
     public Solider findSolider(String soliderName) {
         page.solidersCards().shouldHave(sizeGreaterThan(0));
         return new Solider(page.solidersCards().find(text(soliderName)));

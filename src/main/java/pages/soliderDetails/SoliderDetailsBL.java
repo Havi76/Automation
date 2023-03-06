@@ -4,6 +4,7 @@ import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import pages.attendanceInfo.AttendanceInfoBL;
 import pages.commendNotes.AddCommanderNoteBL;
 import pages.deleteNote.DeleteNoteBL;
@@ -19,6 +20,7 @@ public class SoliderDetailsBL {
     static boolean showingMore = false;
     public static Boolean noteFoundFlag = false;
 
+    @Step
     public AddCommanderNoteBL clickOnNewCommanderNote() {
         page.addCommanderNote().click();
         return new AddCommanderNoteBL();
