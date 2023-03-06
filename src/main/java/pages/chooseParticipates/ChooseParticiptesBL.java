@@ -11,7 +11,7 @@ public class ChooseParticiptesBL {
             Selenide.page(ChooseParticiptesPage.class);
     Random random = new Random();
 
-    @Step("Choose random subunit")
+    @Step
     public ChooseParticiptesBL chooseRandomSubunit(){
         page.subunitCheckboxCollection().get(random.nextInt
                 (page.subunitCheckboxCollection().size())).click();
